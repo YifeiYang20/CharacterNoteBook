@@ -1,0 +1,52 @@
+﻿<!--Yifei Yang-->
+@model UsedCharacterListViewModel
+@{
+    ViewBag.Title = "UsedCharacter List";
+}
+
+<h1>Optional characters and story elements</h1>
+<div class="row">
+    <div class="col-sm-2">
+            <a asp-controller="UsedCharacter" asp-action="List" asp-route-id="All" 
+                class="list-group-item 
+                @Model.CheckActiveTheSpecies(ViewBag.SelectedTheSpeciesName)">
+                All
+            </a>
+
+            @foreach (TheSpecies c in Model.Species)
+            {
+
+                    <a asp-controller="UsedCharacter" asp-action="List" asp-route-id="@c.Name" 
+                       class="list-group-item
+                             @Model.CheckActiveTheSpecies(c.Name)">
+                        @c.Name
+                    </a>
+
+            }
+    </div>
+
+    <div class="col-sm-10">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Species</th>
+                    <th></th>
+                    <th></th>
+            </thead>
+            <tbody>
+                @foreach (var usedCharacter in Model.UsedCharacters)
+                {
+                    <tr>
+                        <td>@usedCharacter.Name</td>
+                        <td>@usedCharacter.Species</td>
+                        <td>
+                            <a asp-controller="Cart" asp-action="Add"
+                               asp-route-id="@usedCharacter.Slug">Add to Cart</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

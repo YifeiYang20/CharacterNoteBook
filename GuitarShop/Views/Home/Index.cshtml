@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<h1>Welcome to the Character NoteBook!</h1>
+
+<p>Please choose some characters and story elements you are interested in for your author friend!</p>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="list-group">
+            <a asp-controller="UsedCharacter" asp-action="List"
+               class="list-group-item">View characters and story elements</a>
+            <a asp-controller="Home" asp-action="About"
+               class="list-group-item">Learn more about this website</a>
+        </div>
+    </div>
+</div>
